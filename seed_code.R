@@ -28,17 +28,18 @@ seeds %>%
                        "Germinated" = "Germination",
                        "Contaminated" = "Contamination")) %>%
   ggplot(aes(x = type, y = number, fill = type)) +
-  geom_boxplot(color = "gray30", fill = NA, width = 0.6)+
+  geom_boxplot(color = "gray30", fill = NA, width = 0.6) +
   geom_quasirandom(aes(color = type), shape = 4, alpha = 0.5,
-                   size = 3.2, stroke = 1.1, groupOnX = TRUE)+
-  theme(legend.position = "none", axis.title = element_text(size = 12),
-        axis.text = element_text(size = 12)) +
+                   size = 2.2, stroke = 0.9, groupOnX = TRUE) +
+  theme(legend.position = "none",
+        axis.title = element_text(size = 9),
+        axis.text = element_text(size = 7)) +
   scale_fill_manual(values = c("Germination" = "#E69F00", "Contamination" = "#56B4E9")) +
   scale_color_manual(values = c("Germination" = "#E69F00", "Contamination" = "#56B4E9")) +
   labs(y = "Proportion of Seeds", x = "Seed Outcome") +
-  stat_n_text()
+  stat_n_text(size = 3)
 
-ggsave("seeds_results.png", width =5, height = 4, dpi = 300)
+ggsave("seeds_results.png", width = 3, height = 3, dpi = 300)
 
 #Stats assumptions
 
@@ -99,3 +100,4 @@ results <- cbind(counts, percents)
 colnames(results) <- c("counts", "percents")
 
 write.csv(results, "results.csv")
+
